@@ -57,10 +57,10 @@ RSpec.describe Budget do
       budget.add_department(marketing)
 
       customer_service.hire(bobbi)
-      marketing.hire(andra)
       sales.hire(james)
+      marketing.hire(andra)
 
-      expect(budget.employee_salaries).to eq([100000, 5809000, 4005000])
+      expect(budget.employee_salaries).to eq([100000, 4005000, 5809000])
     end
   end
 end
