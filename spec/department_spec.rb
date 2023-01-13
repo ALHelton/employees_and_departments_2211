@@ -48,6 +48,7 @@ RSpec.describe Department do
       bobbi.make_expense(10)
       aaron.make_expense(20)
 
+      expect(customer_service.employee_expense).to eq(75)
       expect(customer_service.expenses).to eq(475)
     end
   end
