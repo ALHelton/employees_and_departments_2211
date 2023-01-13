@@ -1,9 +1,11 @@
 class Budget
   attr_reader :year,
-              :departments
+              :departments,
+              :total_expenses
   def initialize(year)
     @year = year
     @departments = []
+    @total_expenses = 0
   end
 
   def add_department(dept)
@@ -24,5 +26,8 @@ class Budget
     end
   end
 
+  def sum_expenses(department)
+    @total_expenses += ( department.expenses + department.employee_expenses )
+  end
   
 end
