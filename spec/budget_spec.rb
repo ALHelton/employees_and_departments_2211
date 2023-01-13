@@ -52,6 +52,10 @@ RSpec.describe Budget do
     it "lists all employees' salaries in array" do
       expect(budget.employee_salaries).to eq([])
 
+      budget.add_department(customer_service)
+      budget.add_department(sales)
+      budget.add_department(marketing)
+
       customer_service.hire(bobbi)
       marketing.hire(andra)
       sales.hire(james)
