@@ -16,5 +16,14 @@ class Department
     @expenses += amt
   end
 
-  
+  def employee_expenses
+
+    @employees.each do |employee|
+      employee.emp_expenses.sum
+    end
+  end
+
+  def add_employee_expenses
+    @expenses << employee_expense
+  end
 end
