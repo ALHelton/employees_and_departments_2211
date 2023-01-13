@@ -43,11 +43,12 @@ RSpec.describe Department do
       customer_service.hire(bobbi)
       customer_service.hire(aaron) 
 
+      customer_service.expense(400)
       bobbi.make_expense(45)
       bobbi.make_expense(10)
       aaron.make_expense(20)
 
-      expect(customer_service.expenses).to eq(75)
+      expect(customer_service.expenses).to eq(475)
     end
   end
 end
