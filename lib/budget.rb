@@ -11,8 +11,8 @@ class Budget
   end
 
   def low_expenses
-    @departments.map do |department|
+    @departments.select do |department|
       department if department.expenses < 500
-    end.compact
+    end
   end
 end
