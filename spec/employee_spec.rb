@@ -22,4 +22,14 @@ RSpec.describe Employee do
       expect(bobbi.salary).to eq(105000)
     end
   end
+
+  describe "#emp_expenses and #make_expense" do
+    it "employee makes expense and adds to an array of their expenses" do
+      expect(employee.emp_expenses).to eq([])
+
+      bobbi.make_expense(45)
+      bobbi.make_expense(10)
+      expect(employee.emp_expenses).to eq([45, 10])
+    end
+  end
 end

@@ -94,3 +94,8 @@ Build upon your code from the first two iterations to complete this task.
 ## Iteration 4
 
 The State of Colorado has given you additional functionality they would like you to implement. They would like to track which employee is responsible for an expense. They should also be able to total all expenses for which a specific employee is responsible.
+
+
+- track which employee is responsible for expense
+
+- total all expenses employee is responsible for
