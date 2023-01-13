@@ -64,8 +64,8 @@ RSpec.describe Budget do
     end
   end
 
-  describe "#match_expense" do
-    xit "track which employee is responsible for expense" do
+  describe "#total_expenses, #match_expense, and #emp_exp_total" do
+    it "track which employee is responsible for expense and total" do
       budget.add_department(customer_service)
       budget.add_department(sales)
       budget.add_department(marketing)
@@ -73,8 +73,30 @@ RSpec.describe Budget do
       customer_service.hire(bobbi)
       sales.hire(james)
       marketing.hire(andra)
+      expect(budget.total_expenses).to eq(0)
 
+      bobbi.make_expense(45)
+      bobbi.make_expense(10)
+      andra.make_expense(20)
+      james.make_expense(10)
+      james.make_expense(50)
+      james.make_expense(30)
 
+      expect(budget.total_expenses).to eq(165)
+
+      expected1 = {
+        bobbi => [45, 10],
+        andra => [20],
+        james => [10, 50, 30]
+      }
+      expect(budget.match_expense).to eq(expected)
+
+      expected2 = {
+        bobbi => 55,
+        andra => 20,
+        james => 90
+      }
+      expect(budget.emp_exp_total).to eq(expected2)
     end
   end
 end
