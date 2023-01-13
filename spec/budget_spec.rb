@@ -7,6 +7,9 @@ RSpec.describe Budget do
   let(:customer_service) { Department.new("Customer Service") }
   let(:sales) { Department.new("Sales") }
   let(:marketing) { Department.new("Marketing") }
+  let(:bobbi) { Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"}) }
+  let(:andra) { Employee.new({name: "Andra Helton", age: "29", salary: "$5809000"}) }
+  let(:james) { Employee.new({name: "James Taylor", age: "28", salary: "$4005000"}) }
 
 
   describe "#initialize" do
@@ -42,6 +45,18 @@ RSpec.describe Budget do
       marketing.expense(2000)
 
       expect(budget.low_expenses).to eq([customer_service, sales])
+    end
+  end
+
+  describe "#employee_salaries" do
+    it "lists all employees' salaries in array" do
+      expect(budget.employee_salaries).to eq([])
+
+      customer_service.hire(bobbi)
+      marketing.hire(andra)
+      sales.hire(james)
+
+      expect(budget.employee_salaries).to eq([100000, 5809000, 4005000])
     end
   end
 end
