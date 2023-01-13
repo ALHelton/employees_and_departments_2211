@@ -89,7 +89,7 @@ RSpec.describe Budget do
       expect(budget.total_expenses).to eq(165)
     end
 
-    xit "#match_expense, and #emp_exp_total" do
+    it "#match_expense, and #emp_exp_total" do
       budget.add_department(customer_service)
       budget.add_department(sales)
       budget.add_department(marketing)
@@ -111,16 +111,16 @@ RSpec.describe Budget do
       budget.sum_expenses(marketing)
 
         expected1 = {
-          bobbi => [45, 10],
-          andra => [20],
-          james => [10, 50, 30]
+          "Bobbi Jaeger" => [45, 10],
+          "Andra Helton" => [20],
+          "James Taylor" => [10, 50, 30]
         }
-        expect(budget.match_expense).to eq(expected)
+        expect(budget.match_expense).to eq(expected1)
 
         expected2 = {
-          bobbi => 55,
-          andra => 20,
-          james => 90
+          "Bobbi Jaeger" => 55,
+          "Andra Helton" => 20,
+          "James Taylor" => 90
         }
         expect(budget.emp_exp_total).to eq(expected2)
     end

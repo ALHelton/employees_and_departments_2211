@@ -29,5 +29,24 @@ class Budget
   def sum_expenses(department)
     @total_expenses += ( department.expenses + department.employee_expenses )
   end
+
+  def match_expense
+    exp_by_emp = Hash.new {|h,k| h[k] = [] }
+    @departments.each do |dept|
+      dept.employees.each do |employee|
+        exp_by_emp[employee.name] = employee.emp_expenses
+      end
+    end
+    exp_by_emp
+  end
   
+  def emp_exp_total
+    emp_exp_total = Hash.new(0)
+    @departments.each do |dept|
+      dept.employees.each do |employee|
+        emp_exp_total[employee.name] = employee.emp_expenses.sum
+      end
+    end
+    emp_exp_total
+  end
 end
