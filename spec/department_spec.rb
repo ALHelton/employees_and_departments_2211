@@ -37,4 +37,17 @@ RSpec.describe Department do
       expect(customer_service.expenses).to eq(125)
     end
   end
+
+  describe "#employee_expense" do
+    it "adds employee expenses to the total expenses amount for the dept" do
+      customer_service.hire(bobbi)
+      customer_service.hire(aaron) 
+
+      bobbi.make_expense(45)
+      bobbi.make_expense(10)
+      aaron.make_expense(20)
+
+      expect(customer_service.expenses).to eq(75)
+    end
+  end
 end
