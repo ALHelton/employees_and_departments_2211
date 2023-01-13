@@ -6,6 +6,7 @@ class Department
     @name = name
     @employees = []
     @expenses = 0
+    @employee_expenses = 0
   end
 
   def hire(person)
@@ -17,13 +18,12 @@ class Department
   end
 
   def employee_expenses
-
-    @employees.each do |employee|
-      employee.emp_expenses.sum
-    end
+    @employees.flat_map do |employee|
+      employee.emp_expenses
+    end.sum
   end
 
   def add_employee_expenses
-    @expenses << employee_expense
+    @expenses += employee_expenses
   end
 end
